@@ -1,0 +1,32 @@
+<div class="grid-bg" aria-hidden="true"></div>
+
+<h1 class="name">{{ profile.name }}</h1>
+
+<div class="photo">
+  <img
+    src="guilherme.jpeg"
+    width="400"
+    height="400"
+    alt="Foto de Guilherme Dantas"
+    fetchpriority="high"
+    decoding="async"
+  />
+</div>
+
+<div class="intro">
+  <span class="bar" aria-hidden="true"></span>
+  <p class="headline">{{ profile.headline }}</p>
+  <p class="subline">{{ profile.subline }}</p>
+
+  <div class="shell mono">
+    <p><span class="prompt" aria-hidden="true">$</span> ls projetos/</p>
+    <ul class="out" aria-label="Projetos">
+      @for (folder of folders; track folder) {
+        <li>
+          <a [href]="'#projeto-' + folder">{{ folder }}/</a>
+        </li>
+      }
+      <li class="cursor" aria-hidden="true"></li>
+    </ul>
+  </div>
+</div>
