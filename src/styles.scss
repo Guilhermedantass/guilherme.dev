@@ -1,0 +1,160 @@
+// Engenharia moderna, com o terminal só nos detalhes.
+// Tema escuro: preto e laranja. Tema claro: papel claro e azul.
+// Por padrão segue o sistema; o botão no topo grava a escolha (data-theme).
+:root {
+  color-scheme: dark;
+  --bg: #101010;
+  --surface: #171717;
+  --line: #2a2a2a;
+  --text: #ececea;
+  --muted: #9a9a95;
+  --faint: #6a6a66;
+  --accent: #ff7a2f;
+  --accent-soft: rgb(255 122 47 / 0.14);
+  --pending: #ff6b6b;
+  --dot: rgb(255 255 255 / 0.11);
+
+  --sans: 'Chivo Variable', 'Chivo', 'Helvetica Neue', Arial, sans-serif;
+  --mono: 'Chivo Mono Variable', 'Chivo Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  --fs-mono: 0.8125rem;
+  --fs-small: 0.9375rem;
+  --fs-body: 1.0625rem;
+  --fs-lede: clamp(1.25rem, 2.6vw, 1.625rem);
+  --fs-h3: 1.375rem;
+  --fs-h2: clamp(1.875rem, 4vw, 2.5rem);
+  --fs-name: clamp(3rem, 10.5vw, 7.75rem);
+
+  --gutter: clamp(1rem, 4vw, 3rem);
+  --page: 72rem;
+  --measure: 62ch;
+}
+
+@mixin light {
+  color-scheme: light;
+  --bg: #f2f2ef;
+  --surface: #ffffff;
+  --line: #dcdcd6;
+  --text: #16171a;
+  --muted: #5d5f66;
+  --faint: #8a8c92;
+  --accent: #2b55e6;
+  --accent-soft: rgb(43 85 230 / 0.1);
+  --pending: #c7372f;
+  --dot: rgb(0 0 0 / 0.11);
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme='escuro']) {
+    @include light;
+  }
+}
+
+:root[data-theme='claro'] {
+  @include light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+dl,
+dd {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration-line: underline;
+  text-decoration-color: var(--line);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  transition:
+    color 120ms ease,
+    text-decoration-color 120ms ease;
+
+  &:hover {
+    color: var(--accent);
+    text-decoration-color: var(--accent);
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+// Código inline, como nos tópicos técnicos dos projetos.
+code {
+  padding: 0.05em 0.3em;
+  border-radius: 3px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 0.85em;
+}
+
+.mono {
+  font-family: var(--mono);
+  font-size: var(--fs-mono);
+  line-height: 1.55;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

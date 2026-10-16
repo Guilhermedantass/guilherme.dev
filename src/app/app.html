@@ -1,0 +1,47 @@
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="top">
+  <a class="home mono" href="#">guilherme.dev</a>
+  <nav class="mono" aria-label="Seções">
+    @for (section of sections; track section.id) {
+      <a [href]="'#' + section.id"
+        ><span class="tilde" aria-hidden="true">~/</span>{{ section.label }}</a
+      >
+    }
+  </nav>
+  <app-theme-toggle />
+</header>
+
+<main id="conteudo">
+  <app-hero />
+
+  <section class="section" id="skills" aria-labelledby="skills-titulo">
+    <h2 id="skills-titulo"><span class="tilde" aria-hidden="true">~/</span>skills</h2>
+    <app-skills />
+  </section>
+
+  <section class="section" id="trajetoria" aria-labelledby="trajetoria-titulo">
+    <h2 id="trajetoria-titulo"><span class="tilde" aria-hidden="true">~/</span>trajetória</h2>
+    <app-trajectory />
+  </section>
+
+  <section class="section" id="projetos" aria-labelledby="projetos-titulo">
+    <h2 id="projetos-titulo"><span class="tilde" aria-hidden="true">~/</span>projetos</h2>
+    <app-projects />
+  </section>
+
+  <section class="section" id="sobre" aria-labelledby="sobre-titulo">
+    <h2 id="sobre-titulo"><span class="tilde" aria-hidden="true">~/</span>sobre</h2>
+    <app-about />
+  </section>
+
+  <section class="section" id="contato" aria-labelledby="contato-titulo">
+    <h2 id="contato-titulo"><span class="tilde" aria-hidden="true">~/</span>contato</h2>
+    <app-contact />
+  </section>
+</main>
+
+<footer class="bottom mono">
+  <span>{{ year }} {{ name }}</span>
+  <a href="#">voltar ao topo</a>
+</footer>
