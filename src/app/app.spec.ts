@@ -12,7 +12,13 @@ describe('App', () => {
     return { fixture, el: fixture.nativeElement as HTMLElement };
   }
 
+  // O jsdom não tem matchMedia; o tema do sistema fica como escuro.
+  beforeEach(() => {
+    vi.stubGlobal('matchMedia', () => ({ matches: false }));
+  });
+
   afterEach(() => {
+    vi.unstubAllGlobals();
     delete document.documentElement.dataset['theme'];
     localStorage.clear();
   });
@@ -57,9 +63,9 @@ describe('App', () => {
 
   it('mostra trechos entre crases dos projetos como código', async () => {
     const { el } = await render();
-    const points = el.querySelector('#projetos .points');
-    expect(points?.querySelector('code')).toBeTruthy();
-    expect(points?.textContent).not.toContain('`');
+    const points = el.querySelectorAll('#projetos .points');
+    expect(el.querySelector('#projetos .points code')).toBeTruthy();
+    points.forEach((list) => expect(list.textContent).not.toContain('`'));
   });
 
   it('copia o e-mail do contato', async () => {
