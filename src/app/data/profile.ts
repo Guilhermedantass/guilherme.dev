@@ -3,9 +3,9 @@ import { Milestone, SocialLink, pending } from './models';
 export const profile = {
   name: 'Guilherme Dantas',
   /** Linhas de apresentação do topo. */
-  headline: 'Desenvolvedor full stack: Java, Spring Boot e Angular.',
+  headline: 'Desenvolvedor full stack com Java, Spring Boot e Angular, da API ao deploy.',
   subline:
-    'Estagiário de TI e formando em Ciência e Tecnologia na UFRN, com base em infraestrutura e estudando segurança (Blue Team).',
+    "Engenheiro da Computação em formação pela Universidade Federal do Rio Grande do Norte e estagiário de TI na L'auto Cargo. Também trabalho com automação em Python e infraestrutura, e estudo segurança com foco em Blue Team.",
   /** Texto do Sobre: começa pelo desenvolvimento e conta a trajetória a partir dele. */
   about: [
     'Desenvolvo aplicações web com Java, Spring Boot e Angular. Meu principal projeto é um sistema de reembolso que fiz como freelance e que está em produção: clientes enviam pedidos com comprovantes e a equipe analisa tudo num painel administrativo. Fiz o sistema de ponta a ponta, das APIs REST com Spring Security e JWT ao front-end em Angular, com deploy em VPS Linux e CI/CD no GitHub Actions.',
